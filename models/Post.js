@@ -15,13 +15,13 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minLength: 3,
+        minlength: 3,
     },
     excerpt: {
         type: String,
         required: true,
         trim: true,
-        minLength: 3,
+        minlength: 3,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -32,7 +32,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minLength: 3,
+        minlength: 3,
     },
 }, { timestamps: true, });
 
