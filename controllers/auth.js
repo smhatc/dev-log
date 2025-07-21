@@ -9,7 +9,11 @@ const title = "/dev/log";
 
 // ROUTES
 router.get("/sign-up", (req, res) => {
-    res.render("./auth/sign-up.ejs", { title, });
+    if (!req.session.user) {
+        res.render("./auth/sign-up.ejs", { title, });
+    } else {
+        res.redirect("/");
+    }
 });
 
 router.post("/sign-up", async (req, res) => {
@@ -36,7 +40,11 @@ router.post("/sign-up", async (req, res) => {
 });
 
 router.get("/sign-in", (req, res) => {
-    res.render("./auth/sign-in.ejs", { title, });
+    if (!req.session.user) {
+        res.render("./auth/sign-in.ejs", { title, });
+    } else {
+        res.redirect("/");
+    }
 });
 
 router.post("/sign-in", async (req, res) => {
