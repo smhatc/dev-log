@@ -1,0 +1,37 @@
+// SETUP
+require("dotenv").config();
+
+const express = require("express");
+const app = express();
+const port = process.env.PORT ? process.env.PORT : "3000";
+
+const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo");
+
+const morgan = require("morgan");
+const isSignedIn = require("./middleware/is-signed-in.js");
+const passUserToView = require("./middleware/pass-user-to-view.js");
+const methodOverride = require("method-override");
+const session = require("express-session");
+
+const authController = require("./controllers/auth.js");
+
+// DATABASE CONNECTION
+mongoose.connect(process.env.MONGODB_URI);
+mongoose.connection.on("connected", () => {
+    console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
+});
+
+// MIDDLEWARE
+app.use(express.urlencoded({ extended: false, }));
+app.use(morgan("dev"));
+app.use(methodOverride("_method"));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI,
+    }),
+}));
+app.use(passUserToView);
