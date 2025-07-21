@@ -16,6 +16,9 @@ const session = require("express-session");
 
 const authController = require("./controllers/auth.js");
 
+// DATA
+const title = "/dev/log";
+
 // DATABASE CONNECTION
 mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
@@ -35,3 +38,15 @@ app.use(session({
     }),
 }));
 app.use(passUserToView);
+
+// ROUTES
+app.get("/", (req, res) => {
+    res.render("index.ejs", { title, });
+});
+
+app.use("/auth", authController);
+
+// STARTING THE SERVER
+app.listen(port, () => {
+    console.log(`Server is listening on port ${port}.`);
+});
