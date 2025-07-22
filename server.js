@@ -7,7 +7,9 @@ const port = process.env.PORT ? process.env.PORT : "3000";
 
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
+const Post = require("./models/Post.js");
 
+const path = require("path");
 const morgan = require("morgan");
 const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
@@ -26,6 +28,7 @@ mongoose.connection.on("connected", () => {
 });
 
 // MIDDLEWARE
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false, }));
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
@@ -40,8 +43,9 @@ app.use(session({
 app.use(passUserToView);
 
 // ROUTES
-app.get("/", (req, res) => {
-    res.render("index.ejs", { title, });
+app.get("/", async (req, res) => {
+    const foundPosts = await Post.find();
+    res.render("index.ejs", { title, foundPosts, });
 });
 
 app.use("/auth", authController);

@@ -1,0 +1,21 @@
+<article class="cat-grid">
+    <% foundPosts.forEach(post => { %>
+        <div class="cat-grid-item">
+            <figure class="cat-grid-item-figure">
+                <img src="<%= post.image.url %>" alt="Banner for <%= post.title %>" class="cat-grid-item-figure-image">
+            </figure>
+            <h2 class="cat-grid-item-heading"><%= post.title %></h2>
+            <p class="cat-grid-item-authordate">By <%= post.author %> • <%= post.updatedAt %></p>
+            <p class="cat-grid-item-excerpt"><%= post.excerpt %></p>
+            <% if (req.session.user) { %>
+                <div class="cat-grid-item-editdel">
+                    <a class="cat-grid-item-editdel-editlink" href="/<%= post._id %>/edit">Edit</a>
+                    <form class="cat-grid-item-editdel-delform" action="/<%= post._id %>?_method=DELETE" method="post">
+                        <button class="cat-grid-item-editdel-delbtn" type="submit">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+            <a href="/<%= post._id %>" class="cat-grid-item-link">Read More <img src="/public/assets/images/read-post-arrow.png" alt="Arrow Icon" class="cat-grid-item-link-arrow"></a>
+        </div>
+    <% }); %>
+</article>
