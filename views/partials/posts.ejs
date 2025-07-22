@@ -7,7 +7,7 @@
             <h2 class="posts-grid-item-heading"><%= post.title %></h2>
             <p class="posts-grid-item-authordate">By <%= post.author %> | <%= post.updatedAt %></p>
             <p class="posts-grid-item-excerpt"><%= post.excerpt %></p>
-            <% if (req.session.user) { %>
+            <% if (user) { %>
                 <div class="posts-grid-item-editdel">
                     <a class="posts-grid-item-editdel-editlink" href="/<%= post._id %>/edit">Edit</a>
                     <form class="posts-grid-item-editdel-delform" action="/<%= post._id %>?_method=DELETE" method="post">
