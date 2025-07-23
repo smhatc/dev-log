@@ -4,13 +4,10 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User.js");
 
-// DATA
-const title = "/dev/log";
-
 // ROUTES
 router.get("/sign-up", (req, res) => {
     if (!req.session.user) {
-        res.render("./auth/sign-up.ejs", { title, });
+        res.render("./auth/sign-up.ejs");
     } else {
         res.redirect("/");
     }
@@ -41,7 +38,7 @@ router.post("/sign-up", async (req, res) => {
 
 router.get("/sign-in", (req, res) => {
     if (!req.session.user) {
-        res.render("./auth/sign-in.ejs", { title, });
+        res.render("./auth/sign-in.ejs");
     } else {
         res.redirect("/");
     }

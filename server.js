@@ -7,19 +7,16 @@ const port = process.env.PORT ? process.env.PORT : "3000";
 
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
-const Post = require("./models/Post.js");
 
 const path = require("path");
 const morgan = require("morgan");
-const isSignedIn = require("./middleware/is-signed-in.js");
 const passUserToView = require("./middleware/pass-user-to-view.js");
+const passTitleToView = require("./middleware/pass-title-to-view.js");
 const methodOverride = require("method-override");
 const session = require("express-session");
 
 const authController = require("./controllers/auth.js");
-
-// DATA
-const title = "/dev/log";
+const postsController = require("./controllers/posts.js");
 
 // DATABASE CONNECTION
 mongoose.connect(process.env.MONGODB_URI);
@@ -41,12 +38,10 @@ app.use(session({
     }),
 }));
 app.use(passUserToView);
+app.use(passTitleToView);
 
 // ROUTES
-app.get("/", async (req, res) => {
-    const foundPosts = await Post.find();
-    res.render("index.ejs", { title, foundPosts, });
-});
+app.use("/", postsController);
 
 app.use("/auth", authController);
 
