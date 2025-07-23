@@ -6,7 +6,7 @@ const Post = require("../models/Post.js");
 // ROUTES
 router.get("/", async (req, res) => {
     const foundPosts = await Post.find();
-    res.render("index.ejs", { foundPosts, });
+    res.render("./posts/index.ejs", { foundPosts, });
 });
 
 router.post("/", async (req, res) => {
