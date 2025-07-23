@@ -35,6 +35,8 @@
     flex-wrap: nowrap;
     padding: 0 0.5em;
     margin: 0 0.5em;
+    user-select: none;
+    -webkit-user-select: none;
     font-size: var(--font-size-text-l);
 }
 
@@ -61,6 +63,8 @@
     display: inline-block;
     padding: 0.5em;
     margin: 0.5em;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .page-header-controls-navmenubtn {

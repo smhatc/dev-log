@@ -21,6 +21,8 @@
     align-items: center;
     flex-wrap: nowrap;
     margin-bottom: 1em;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .page-footer-branding a::after {
