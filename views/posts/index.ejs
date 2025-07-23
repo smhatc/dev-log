@@ -18,7 +18,7 @@
                 </figure>
                 <h2 class="posts-grid-item-heading"><%= post.title %></h2>
                 <p class="posts-grid-item-authordate">
-                    By <%= post.author %> | <%= post.updatedAt %>
+                    By <%= post.author %> | <%= post.updatedAt.toDateString() %>
                 </p>
                 <p class="posts-grid-item-excerpt"><%= post.excerpt %></p>
                 <% if (user) { %>

@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", isSignedIn, upload.single("thumbnail"), async (req, res) => {
     try {
-        req.body.author = req.session.user._id;
+        req.body.author = req.session.user.username;
         req.body.thumbnail = {
             url: req.file.path,
             cloudinary_id: req.file.filename,
