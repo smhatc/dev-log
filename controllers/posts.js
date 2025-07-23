@@ -27,7 +27,7 @@ router.post("/", isSignedIn, upload.single("thumbnail"), async (req, res) => {
     }
 });
 
-router.get("/new", (req, res) => {
+router.get("/new", isSignedIn, (req, res) => {
     res.render("./posts/new.ejs");
 });
 
