@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/head-stylesheets.ejs") %>
+    <title>Edit Post - <%= title %></title>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main>
+        <h1 class="editpost-heading">Edit Post</h1>
+        <form class="editpost-form" action="/<%= foundPost._id %>?_method=PUT" method="post" enctype="multipart/form-data">
+            <label for="thumbnail">Upload Thumbnail</label>
+            <input id="thumbnail" name="thumbnail" value="<%= foundPost.thumbnail %>" type="file" accept="image/*">
+            <label for="title">Choose Title</label>
+            <input id="title" name="title" value="<%= foundPost.title %>" type="text" minlength="3" maxlength="20" required placeholder="Enter a title">
+            <label for="excerpt">Summarize Post</label>
+            <textarea id="excerpt" name="excerpt" minlength="3" maxlength="200" required placeholder="Enter a summary"><%= foundPost.excerpt %></textarea>
+            <label for="body">Post Text</label>
+            <textarea id="body" name="body" minlength="3" maxlength="10000" required placeholder="Enter your post text here"><%= foundPost.body %></textarea>
+            <button class="editpost-form-submit" type="submit">Edit Post</button>
+        </form>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
+</html>

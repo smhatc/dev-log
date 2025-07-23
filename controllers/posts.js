@@ -41,16 +41,42 @@ router.get("/:postId", async (req, res) => {
     }
 });
 
-router.put("/:postId", async (req, res) => {
-    res.send("Hello, world!");
+router.put("/:postId", isSignedIn, upload.single("thumbnail"), async (req, res) => {
+    const foundPost = await Post.findById(req.params.postId);
+    if (foundPost.author === req.session.user.username) {
+        try {
+            if (req.file && foundPost.thumbnail?.cloudinary_id) {
+                await cloudinary.uploader.destroy(foundPost.thumbnail.cloudinary_id);
+                foundPost.thumbnail.url = req.file.path;
+                foundPost.thumbnail.cloudinary_id = req.file.filename;
+            }
+            
+            foundPost.title = req.body.title;
+            foundPost.exerpt = req.body.excerpt;
+            foundPost.body = req.body.body;
+
+            await foundPost.save();
+            return res.redirect(`/${req.params.postId}`);
+        } catch (error) {
+            console.log(error);
+            res.send("Something went wrong.");
+        }
+    } else {
+        return res.send("Not authorized.");
+    }
 });
 
 router.delete("/:postId", async (req, res) => {
     res.send("Hello, world!");
 });
 
-router.get("/:postId/edit", (req, res) => {
-    res.send("Hello, world!");
+router.get("/:postId/edit", isSignedIn, async (req, res) => {
+    const foundPost = await Post.findById(req.params.postId);
+    if (foundPost.author === req.session.user.username) {
+        return res.render("./posts/edit.ejs", { foundPost, });
+    } else {
+        return res.send("Not authorized.");
+    }
 });
 
 // EXPORTING ROUTES

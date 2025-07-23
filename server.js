@@ -41,6 +41,8 @@ app.use(passUserToView);
 app.use(passTitleToView);
 
 // ROUTES
+app.get("/favicon.ico", (req, res) => res.status(204).end());
+
 app.use("/", postsController);
 
 app.use("/auth", authController);
