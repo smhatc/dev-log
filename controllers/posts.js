@@ -50,11 +50,9 @@ router.put("/:postId", isSignedIn, upload.single("thumbnail"), async (req, res) 
                 foundPost.thumbnail.url = req.file.path;
                 foundPost.thumbnail.cloudinary_id = req.file.filename;
             }
-            
             foundPost.title = req.body.title;
             foundPost.exerpt = req.body.excerpt;
             foundPost.body = req.body.body;
-
             await foundPost.save();
             return res.redirect(`/${req.params.postId}`);
         } catch (error) {
@@ -66,8 +64,21 @@ router.put("/:postId", isSignedIn, upload.single("thumbnail"), async (req, res) 
     }
 });
 
-router.delete("/:postId", async (req, res) => {
-    res.send("Hello, world!");
+router.delete("/:postId", isSignedIn, async (req, res) => {
+    try {
+        const foundPost = await Post.findById(req.params.postId);
+        if (!foundPost.author === req.session.user.username) {
+            return res.send("Not authorized.");
+        }
+        if (foundPost.thumbnail?.cloudinary_id) {
+            await cloudinary.uploader.destroy(foundPost.thumbnail.cloudinary_id);
+        }
+        await foundPost.deleteOne();
+        res.redirect("/");
+    } catch (error) {
+        console.log(error);
+        res.send("Something went wrong.");
+    }
 });
 
 router.get("/:postId/edit", isSignedIn, async (req, res) => {
