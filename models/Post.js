@@ -16,12 +16,14 @@ const postSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 3,
+        maxlength: 20,
     },
     excerpt: {
         type: String,
         required: true,
         trim: true,
         minlength: 3,
+        maxlength: 50,
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
@@ -33,6 +35,7 @@ const postSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 3,
+        maxlength: 10000,
     },
 }, { timestamps: true, });
 

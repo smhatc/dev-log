@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include("../partials/head-stylesheets.ejs") %>
     <title>Sign In - <%= title %></title>
 </head>
 <body>
+    <%- include("../partials/header.ejs") %>
     <h1>Sign In</h1>
     <form action="/auth/sign-in" method="post">
         <label for="username">Username</label>
@@ -15,5 +17,6 @@
         <button type="submit">Sign In</button>
         <p>Don't have an account? <a href="/auth/sign-up">Sign up instead</a>.</p>
     </form>
+    <%- include("../partials/footer.ejs") %>
 </body>
 </html>
