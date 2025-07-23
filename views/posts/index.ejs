@@ -21,7 +21,7 @@
                     By <%= post.author %> | <%= post.updatedAt.toDateString() %>
                 </p>
                 <p class="posts-grid-item-excerpt"><%= post.excerpt %></p>
-                <% if (user) { %>
+                <% if (user && user.username === post.author) { %>
                     <div class="posts-grid-item-editdel">
                         <a class="posts-grid-item-editdel-editlink" href="/<%= post._id %>/edit">Edit</a>
                         <form class="posts-grid-item-editdel-delform" action="/<%= post._id %>?_method=DELETE"
@@ -30,7 +30,7 @@
                         </form>
                     </div>
                 <% } %>
-                <a href="/<%= post._id %>" class="posts-grid-item-link">Read More <img src="/public/assets/images/read-post-arrow.png" alt="Arrow Icon" class="posts-grid-item-link-arrow"></a>
+                <a href="/<%= post._id %>" class="posts-grid-item-link">Read More <img src="/assets/images/read-post-arrow.png" alt="Arrow Icon" class="posts-grid-item-link-arrow"></a>
             </div>
         <% }); %>
     </article>
