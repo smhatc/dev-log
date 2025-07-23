@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo");
 
 const path = require("path");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const passUserToView = require("./middleware/pass-user-to-view.js");
 const passTitleToView = require("./middleware/pass-title-to-view.js");
 const methodOverride = require("method-override");
