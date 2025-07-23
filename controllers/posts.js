@@ -32,7 +32,13 @@ router.get("/new", isSignedIn, (req, res) => {
 });
 
 router.get("/:postId", async (req, res) => {
-    res.send("Hello, world!");
+    try {
+        const foundPost = await Post.findById(req.params.postId);
+        res.render("./posts/show.ejs", { foundPost, });
+    } catch (error) {
+        console.log(error);
+        res.send("Something went wrong.");
+    }
 });
 
 router.put("/:postId", async (req, res) => {

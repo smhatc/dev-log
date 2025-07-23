@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include("../partials/head-stylesheets.ejs") %>
+    <title><%= foundPost.title %> - <%= title %></title>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main>
+        <section class="blog-main-hero">
+            <figure class="blog-figure">
+                <img class="blog-figure-image" src="<%= foundPost.thumbnail.url %>" alt="Banner for <%= foundPost.title %>">
+            </figure>
+            <h1 class="blog-heading"><%= foundPost.title %></h1>
+            <p class="posts-grid-item-authordate">
+                By <%= foundPost.author %> | <%= foundPost.updatedAt.toDateString() %>
+            </p>
+            <p class="blog-para"><%= foundPost.excerpt %></p>
+            <% if (user && user.username === foundPost.author) { %>
+                <div class="posts-grid-item-editdel">
+                    <a class="posts-grid-item-editdel-editlink" href="/<%= foundPost._id %>/edit">Edit</a>
+                    <form class="posts-grid-item-editdel-delform" action="/<%= foundPost._id %>?_method=DELETE"
+                        method="post">
+                        <button class="posts-grid-item-editdel-delbtn" type="submit">Delete</button>
+                    </form>
+                </div>
+            <% } %>
+        </section>
+        <hr>
+        <section class="blog-main-content">
+            <p class="blog-para"><%= foundPost.body %></p>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
+</html>
