@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("../partials/head-stylesheets.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/posts-crud.css">
     <title>Add Post - <%= title %></title>
 </head>
 <body>
@@ -11,14 +12,14 @@
     <main>
         <h1 class="addpost-heading">Add Post</h1>
         <form class="addpost-form" action="/" method="post" enctype="multipart/form-data">
-            <label for="thumbnail">Upload Thumbnail</label>
-            <input id="thumbnail" name="thumbnail" type="file" accept="image/*" required>
-            <label for="title">Choose Title</label>
-            <input id="title" name="title" type="text" minlength="3" maxlength="20" required placeholder="Enter a title">
-            <label for="excerpt">Summarize Post</label>
-            <textarea id="excerpt" name="excerpt" minlength="3" maxlength="200" required placeholder="Enter a summary"></textarea>
-            <label for="body">Post Text</label>
-            <textarea id="body" name="body" minlength="3" maxlength="10000" required placeholder="Enter your post text here"></textarea>
+            <label class="addpost-form-label" for="thumbnail">Upload Thumbnail</label>
+            <input class="addpost-form-input" id="thumbnail" name="thumbnail" type="file" accept="image/*" required>
+            <label class="addpost-form-label" for="title">Choose Title</label>
+            <input class="addpost-form-input" id="title" name="title" type="text" minlength="3" maxlength="20" required placeholder="Enter a title">
+            <label class="addpost-form-label" for="excerpt">Summarize Post</label>
+            <textarea class="addpost-form-input" id="excerpt" name="excerpt" rows="5" minlength="3" maxlength="200" required placeholder="Enter a summary"></textarea>
+            <label class="addpost-form-label" for="body">Post Text</label>
+            <textarea class="addpost-form-input" id="body" name="body" rows="10" minlength="3" maxlength="10000" required placeholder="Enter your post text here"></textarea>
             <button class="addpost-form-submit" type="submit">Add Post</button>
         </form>
     </main>

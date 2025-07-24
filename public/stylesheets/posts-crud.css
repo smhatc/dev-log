@@ -1,0 +1,34 @@
+.editpost-heading,
+.addpost-heading {
+    text-align: center;
+    margin: 1.75em auto;
+}
+
+.editpost-form,
+.addpost-form {
+    width: 75%;
+    margin: 1.75em auto;
+}
+
+
+.editpost-form-label,
+.addpost-form-label {
+    font-weight: var(--font-weight-text-l);
+}
+
+.addpost-form-input,
+.editpost-form-input {
+    /* Styling form inputs */
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.addpost-form-submit,
+.editpost-form-submit {
+    /* Styling the submit button, inherits the input hover and focus as it is an <input type="submit"> */
+    width: 100%;
+    margin: 1em 0;
+    font-weight: var(--font-weight-text-l);
+    background-color: var(--bg-color-3);
+    color: var(--color-text-2);
+}

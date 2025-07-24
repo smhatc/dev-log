@@ -135,7 +135,8 @@ a:focus-visible::after {
 }
 
 button,
-input {
+input,
+textarea {
     display: block;
     transition: box-shadow 0.4s ease;
     padding: 0.375em;
@@ -154,13 +155,19 @@ button:focus-visible,
 input:hover:not(.sign-in-form-inputerror),
 input:focus-visible:not(.sign-in-form-inputerror),
 input:hover:not(.sign-up-form-inputerror),
-input:focus-visible:not(.sign-up-form-inputerror) {
+input:focus-visible:not(.sign-up-form-inputerror),
+textarea:hover,
+textarea:focus-visible {
     box-shadow: var(--box-shadow-1);
 }
 
 button:hover,
 input[type="submit"]:hover {
     cursor: pointer;
+}
+
+textarea {
+    resize: none;
 }
 
 hr {
