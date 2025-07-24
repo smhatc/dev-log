@@ -4,8 +4,7 @@ The official GitHub repository for /dev/log, a MEN stack CRUD app containing blo
 <img src="/public/assets/images/completed-blog-screenshot.png" alt="Screenshot of the Completed Blog">
 
 ## 📃 Description
-/dev/log is a tech blogging website containing posts about various technology related topics such as online privacy, cybersecurity, networking, Linux, and more, with a mix of tutorials and informational posts. Although it is still in its early, experimental stages, /dev/log aims to take on the entire tech blogging world!
-
+/dev/log is a tech blogging website containing posts about various technology-related topics such as online privacy, cybersecurity, networking, Linux, and more, with a mix of tutorials and informational posts. The website currently allows users to create an account, browse through posts shared by other users, and create, update, or delete their own posts.
 
 ## 🔍 Background Information
 I am creating this project as part of my studies at General Assembly's software engineering bootcamp.
@@ -15,7 +14,7 @@ The reason I chose to create a tech blog as my project is simply because I've al
 ## 🚀 Getting Started
 **Find it here:** [https://dev-log-53b790495dc0.herokuapp.com](https://dev-log-53b790495dc0.herokuapp.com).
 
-**Planning materials:** [https://github.com/smhatc/dev-log](https://github.com/smhatc/dev-log).
+**Planning materials:** [https://trello.com/b/9Hq2qG13/dev-log](https://trello.com/b/9Hq2qG13/dev-log).
 
 ## 💻 Technologies Used
 - HTML.
