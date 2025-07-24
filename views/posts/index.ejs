@@ -4,36 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%- include("../partials/head-stylesheets.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/posts.css">
     <title><%= title %></title>
 </head>
 <body>
     <%- include("../partials/header.ejs") %>
-    <h1 class="posts-heading">Latest Posts</h1>
-    <article class="posts-grid">
-        <% foundPosts.forEach((post) => { %>
-            <div class="posts-grid-item">
-                <figure class="posts-grid-item-figure">
-                    <img src="<%= post.thumbnail.url %>" alt="Banner for <%= post.title %>"
-                        class="posts-grid-item-figure-image">
-                </figure>
-                <h2 class="posts-grid-item-heading"><%= post.title %></h2>
-                <p class="posts-grid-item-authordate">
-                    By <%= post.author %> | <%= post.updatedAt.toDateString() %>
-                </p>
-                <p class="posts-grid-item-excerpt"><%= post.excerpt %></p>
-                <% if (user && user.username === post.author) { %>
-                    <div class="posts-grid-item-editdel">
-                        <a class="posts-grid-item-editdel-editlink" href="/<%= post._id %>/edit">Edit</a>
-                        <form class="posts-grid-item-editdel-delform" action="/<%= post._id %>?_method=DELETE"
-                            method="post">
-                            <button class="posts-grid-item-editdel-delbtn" type="submit">Delete</button>
-                        </form>
-                    </div>
-                <% } %>
-                <a href="/<%= post._id %>" class="posts-grid-item-link">Read More <img src="/assets/images/read-post-arrow.png" alt="Arrow Icon" class="posts-grid-item-link-arrow"></a>
-            </div>
-        <% }); %>
-    </article>
+    <main>
+        <h1 class="posts-heading">Latest Posts</h1>
+        <article class="posts-grid">
+            <% foundPosts.forEach((post) => { %>
+                <div class="posts-grid-item">
+                    <figure class="posts-grid-item-figure">
+                        <img src="<%= post.thumbnail.url %>" alt="Banner for <%= post.title %>"
+                            class="posts-grid-item-figure-image">
+                    </figure>
+                    <h2 class="posts-grid-item-heading"><%= post.title %></h2>
+                    <p class="posts-grid-item-authordate">
+                        By <%= post.author %> | <%= post.updatedAt.toDateString() %>
+                    </p>
+                    <p class="posts-grid-item-excerpt"><%= post.excerpt %></p>
+                    <% if (user && user.username === post.author) { %>
+                        <div class="posts-grid-item-editdel">
+                            <a class="posts-grid-item-editdel-editlink" href="/<%= post._id %>/edit">Edit</a>
+                            <form class="posts-grid-item-editdel-delform" action="/<%= post._id %>?_method=DELETE"
+                                method="post">
+                                <button class="posts-grid-item-editdel-delbtn" type="submit">Delete</button>
+                            </form>
+                        </div>
+                    <% } %>
+                    <a href="/<%= post._id %>" class="posts-grid-item-link">Read More <img src="/assets/images/read-post-arrow.png" alt="Arrow Icon" class="posts-grid-item-link-arrow"></a>
+                </div>
+            <% }); %>
+        </article>
+    </main>
     <%- include("../partials/footer.ejs") %>
 </body>
 </html>

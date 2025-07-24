@@ -4,21 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%- include("../partials/head-stylesheets.ejs") %>
+    <link rel="stylesheet" href="/stylesheets/auth.css">
     <title>Sign Up - <%= title %></title>
 </head>
 <body>
     <%- include("../partials/header.ejs") %>
-    <h1>Sign Up</h1>
-    <form action="/auth/sign-up" method="post">
-        <label for="username">Username</label>
-        <input type="text" name="username" id="username" placeholder="Create a username" minlength="3" maxlength="20" required>
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" placeholder="Create a strong password" minlength="8" maxlength="128" required>
-        <label for="confirm-password">Confirm Password</label>
-        <input type="password" name="confirmPassword" id="confirm-password" placeholder="Confirm your new password" minlength="8" maxlength="128" required>
-        <button type="submit">Sign Up</button>
-        <p>Already have an account? <a href="/auth/sign-in">Sign in instead</a>.</p>
-    </form>
+    <main>
+        <h1 class="sign-up-header">Sign Up</h1>
+        <form class="sign-up-form" action="/auth/sign-up" method="post">
+            <label class="sign-in-form-label" for="username">Username</label>
+            <input class="sign-up-form-input" type="text" name="username" id="username" placeholder="Create a username" minlength="3" maxlength="20" required>
+            <label class="sign-in-form-label" for="password">Password</label>
+            <input class="sign-up-form-input" type="password" name="password" id="password" placeholder="Create a strong password" minlength="8" maxlength="128" required>
+            <label class="sign-in-form-label" for="confirm-password">Confirm Password</label>
+            <input class="sign-up-form-input" type="password" name="confirmPassword" id="confirm-password" placeholder="Confirm your new password" minlength="8" maxlength="128" required>
+            <button class="sign-up-form-submitbtn" type="submit">Sign Up</button>
+            <p>Already have an account? <a href="/auth/sign-in">Sign in instead</a>.</p>
+        </form>
+    </main>
     <%- include("../partials/footer.ejs") %>
 </body>
 </html>

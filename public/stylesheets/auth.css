@@ -1,0 +1,34 @@
+.sign-in-header,
+.sign-up-header {
+    text-align: center;
+    margin: 1.75em auto;
+}
+
+.sign-in-form,
+.sign-up-form {
+    width: 75%;
+    margin: 1.75em auto;
+}
+
+
+.sign-in-form-label,
+.sign-up-form-label {
+    font-weight: var(--font-weight-text-l);
+}
+
+.sign-in-form-input,
+.sign-up-form-input {
+    /* Styling form inputs */
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.sign-in-form-submitbtn,
+.sign-up-form-submitbtn {
+    /* Styling the submit button, inherits the input hover and focus as it is an <input type="submit"> */
+    width: 100%;
+    margin: 1em 0;
+    font-weight: var(--font-weight-text-l);
+    background-color: var(--bg-color-3);
+    color: var(--color-text-2);
+}
