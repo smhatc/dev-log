@@ -10,7 +10,7 @@
                 <li class="page-header-navigation-list-link"><a href="/">Home</a></li>
                 <li class="page-header-navigation-list-link"><a href="/new">Add Post</a></li>
                 <li class="page-header-navigation-list-link">
-                    <a href="<%= user ? `/?user=${user._id}` : `/auth/sign-in` %>">Your Posts</a>
+                    <a href="<%= user ? `/?user=${user.username}` : `/auth/sign-in` %>">Your Posts</a>
                     
                 </li>
 

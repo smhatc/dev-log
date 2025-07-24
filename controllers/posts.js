@@ -8,7 +8,13 @@ const cloudinary = require("../config/cloudinary.js");
 
 // ROUTES
 router.get("/", async (req, res) => {
-    const foundPosts = await Post.find();
+    let foundPosts;
+    if (req.query.user) {
+        const allPosts = await Post.find();
+        foundPosts = allPosts.filter(post => post.author === req.query.user);
+    } else {
+        foundPosts = await Post.find();
+    }
     res.render("./posts/index.ejs", { foundPosts, });
 });
 
